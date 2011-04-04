@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace WindowsPhonePivotApplication1.ViewModels
+namespace TrafikantenApp.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {

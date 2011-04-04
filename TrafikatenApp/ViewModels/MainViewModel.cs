@@ -1,10 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using WindowsPhonePivotApplication1.ViewModels;
 
-
-namespace WindowsPhonePivotApplication1
+namespace TrafikantenApp.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {

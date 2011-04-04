@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafikantenApp", "TrafikatenApp\TrafikantenApp.csproj", "{21AB5EEC-1889-4D95-A757-E4389056C3E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafikantenAppTests", "TrafikantenAppTests\TrafikantenAppTests.csproj", "{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,15 @@ Global
 		{21AB5EEC-1889-4D95-A757-E4389056C3E5}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{21AB5EEC-1889-4D95-A757-E4389056C3E5}.Test|Any CPU.Build.0 = Test|Any CPU
 		{21AB5EEC-1889-4D95-A757-E4389056C3E5}.Test|Any CPU.Deploy.0 = Test|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Test|Any CPU.Build.0 = Release|Any CPU
+		{26DA0A40-5CEB-46E4-80FA-2FB340609E2D}.Test|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
