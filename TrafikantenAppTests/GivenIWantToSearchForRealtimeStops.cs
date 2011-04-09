@@ -12,11 +12,7 @@ namespace TrafikantenAppTests
         {
             bool itemChanged = false;
 
-            ItemViewModel itemViewModel = new ItemViewModel();
-            itemViewModel.PropertyChanged += (s, e) => itemChanged = true;
-            itemViewModel.LineOne = "line1";
-            itemViewModel.LineTwo = "line2";
-            itemViewModel.LineThree = "line3";
+            
 
             Assert.IsTrue(itemChanged);
         }
@@ -24,11 +20,11 @@ namespace TrafikantenAppTests
         [TestMethod]
         public void WhenSubmittingStopNameAndPerformingSearch_ShouldReturnListOfStops()
         {
-           StopsViewModel stopsViewModel = new StopsViewModel(null);
+           StopsViewViewModel stopsViewViewModel = new StopsViewViewModel(null);
 
-            stopsViewModel.StopToFind = "Sinsen";
+            stopsViewViewModel.StopToFind = "Sinsen";
            
-            Assert.IsTrue(stopsViewModel.ListOfStops != null);            
+            Assert.IsTrue(stopsViewViewModel.ListOfStops != null);            
         }
 
         
@@ -36,7 +32,7 @@ namespace TrafikantenAppTests
         public void WhenSubmittingStopNameAndPerformingSearch_ShouldFetchStopsFromService()
         {
             var realtimeService = new RealtimeServiceStub();
-            StopsViewModel viewModel = new StopsViewModel(realtimeService);
+            StopsViewViewModel viewModel = new StopsViewViewModel(realtimeService);
 
             viewModel.StopToFind = "Sinsen";
             viewModel.FindStops();

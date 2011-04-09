@@ -1,16 +1,17 @@
-<ViewModels:StopsViewModel 
+<ViewModels:StopsViewViewModel 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TrafikantenApp" xmlns:ViewModels="clr-namespace:TrafikantenApp.ViewModels" >
+    xmlns:local="clr-namespace:TrafikantenApp" xmlns:ViewModels="clr-namespace:TrafikantenApp.ViewModels"
+    StopToFind="Sinsen">
     
     
-    <ViewModels:StopsViewModel.ListOfStops>
-        <local:Stop local:Name="Sinsen Kirke" />
+    <ViewModels:StopsViewViewModel.ListOfStops>
+        <local:Stop local:Name="Sinsen Kirke" ID="123"/>
         <local:Stop local:Name="Lørenvangen" />
         <local:Stop local:Name="Sinsenkrysset" />
         <local:Stop local:Name="Carl Berner [T]" />
         <local:Stop local:Name="Torshov" />
         <local:Stop local:Name="Nationaltheateret" />        
-    </ViewModels:StopsViewModel.ListOfStops>
+    </ViewModels:StopsViewViewModel.ListOfStops>
     
-</ViewModels:StopsViewModel>
+</ViewModels:StopsViewViewModel>
