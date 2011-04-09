@@ -26,10 +26,7 @@ namespace TrafikantenApp
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+          
         }
 
       
@@ -49,7 +46,7 @@ namespace TrafikantenApp
             if (e.Key == Key.Enter)
             {
                 Focus();
-               
+               App.ViewModel.FindStops();
             }
             
         }

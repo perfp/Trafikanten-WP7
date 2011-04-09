@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Xml.Linq;
@@ -8,7 +9,7 @@ namespace TrafikantenApp.Services
 {
     public class RealtimeStopsService : IRealtimeStopsService
     {    
-        private IList<Stop> _items = new List<Stop>();
+        private ObservableCollection<Stop> _items = new ObservableCollection<Stop>();
         private WebClient _client;
 
         public void FindStops(string stopToFind)
@@ -16,13 +17,13 @@ namespace TrafikantenApp.Services
             RetrieveStops(stopToFind);
         }
 
-        public event Action<IList<Stop>> StopsFound;
+        public event Action<ObservableCollection<Stop>> StopsFound;
 
         private void RetrieveStops(string name)
         {
             _client = new WebClient();
             _client.DownloadStringCompleted += StopReceived;
-            _client.DownloadStringAsync(new Uri("http://localhost:8080/siri/checkrealtimestop.aspx?name=" + name));
+            _client.DownloadStringAsync(new Uri("http://reis.trafikanten.no/siri/checkrealtimestop.aspx?name=" + name));
             
        }
 

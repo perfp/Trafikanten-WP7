@@ -113,9 +113,9 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Background.png" />
-    <Content Include="ApplicationIcon.png" />
-    <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="images\Background.png" />
+    <Content Include="images\ApplicationIcon.png" />
+    <Content Include="images\SplashScreenImage.jpg" />
     <Resource Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Resource Include="Toolkit.Content\ApplicationBar.Cancel.png" />
   </ItemGroup>
