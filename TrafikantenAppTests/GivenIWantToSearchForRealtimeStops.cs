@@ -11,16 +11,16 @@ namespace TrafikantenAppTests
         public void VerifyRealtimeResponse()
         {
             bool itemChanged = false;
-
-            
-
+            StopsViewViewModel  viewModel = new StopsViewViewModel(new RealtimeServiceStub());
+            viewModel.PropertyChanged += (sender, ea) => itemChanged = true;
+            viewModel.StopToFind = "test";
             Assert.IsTrue(itemChanged);
         }
 
         [TestMethod]
         public void WhenSubmittingStopNameAndPerformingSearch_ShouldReturnListOfStops()
         {
-           StopsViewViewModel stopsViewViewModel = new StopsViewViewModel(null);
+           StopsViewViewModel stopsViewViewModel = new StopsViewViewModel(new RealtimeServiceStub());
 
             stopsViewViewModel.StopToFind = "Sinsen";
            
