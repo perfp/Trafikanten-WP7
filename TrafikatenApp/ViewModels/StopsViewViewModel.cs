@@ -9,16 +9,18 @@ using Caliburn.Micro;
 namespace TrafikantenApp.ViewModels
 {
     [SurviveTombstone]
-    public class StopsViewViewModel : INotifyPropertyChanged
+    public class StopsViewViewModel : ViewModelBase 
     {        
         private readonly IRealtimeStopsService realtimeStopsService;
+        private readonly INavigationService navigationService;
 
-        public StopsViewViewModel(IRealtimeStopsService realtimeStopsService)
+        public StopsViewViewModel(IRealtimeStopsService realtimeStopsService, INavigationService navigationService)
         {
             ListOfStops = new ObservableCollection<Stop>();
             this.realtimeStopsService = realtimeStopsService;
             this.realtimeStopsService.StopsFound += StopsFound;
             StopToFind = "";
+            this.navigationService = navigationService;
         }
 
         private string stopToFind;
@@ -28,7 +30,7 @@ namespace TrafikantenApp.ViewModels
             set
             {
                 stopToFind = value;
-                FirePropertyChanged(x=>StopToFind);
+                FirePropertyChanged(()=>StopToFind);
             }
         }
 
@@ -50,21 +52,13 @@ namespace TrafikantenApp.ViewModels
         public Stop SelectedStop { get; set; }
         public void StopSelected()
         {
-            string name = "";
-            if (SelectedStop != null) name = SelectedStop.Name;
-            Debug.WriteLine(name + ": Stop selected...");
+            if (SelectedStop != null)
+            {
+                navigationService.Navigate(new Uri("/RealtimeResultsView.xaml?StopID=" + SelectedStop.ID,
+                                                   UriKind.RelativeOrAbsolute));
+            }
         }
 
-        private void FirePropertyChanged(string property)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
-        }
-
-        private void FirePropertyChanged(Func<object, string> func)
-        {
-            FirePropertyChanged(func.Method.Name);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+      
     }
 }

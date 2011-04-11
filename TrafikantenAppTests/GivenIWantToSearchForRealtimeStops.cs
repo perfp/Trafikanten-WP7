@@ -11,7 +11,7 @@ namespace TrafikantenAppTests
         public void VerifyRealtimeResponse()
         {
             bool itemChanged = false;
-            StopsViewViewModel  viewModel = new StopsViewViewModel(new RealtimeServiceStub());
+            StopsViewViewModel  viewModel = new StopsViewViewModel(new RealtimeServiceStub(), null);
             viewModel.PropertyChanged += (sender, ea) => itemChanged = true;
             viewModel.StopToFind = "test";
             Assert.IsTrue(itemChanged);
@@ -20,7 +20,7 @@ namespace TrafikantenAppTests
         [TestMethod]
         public void WhenSubmittingStopNameAndPerformingSearch_ShouldReturnListOfStops()
         {
-           StopsViewViewModel stopsViewViewModel = new StopsViewViewModel(new RealtimeServiceStub());
+           StopsViewViewModel stopsViewViewModel = new StopsViewViewModel(new RealtimeServiceStub(), null);
 
             stopsViewViewModel.StopToFind = "Sinsen";
            
@@ -32,7 +32,7 @@ namespace TrafikantenAppTests
         public void WhenSubmittingStopNameAndPerformingSearch_ShouldFetchStopsFromService()
         {
             var realtimeService = new RealtimeServiceStub();
-            StopsViewViewModel viewModel = new StopsViewViewModel(realtimeService);
+            StopsViewViewModel viewModel = new StopsViewViewModel(realtimeService, null);
 
             viewModel.StopToFind = "Sinsen";
             viewModel.FindStops();

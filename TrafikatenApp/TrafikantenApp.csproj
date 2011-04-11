@@ -100,7 +100,12 @@
     <Compile Include="Bootstrapper\SimpleContainer.cs" />
     <Compile Include="Model\Stop.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\RealtimeResultsViewModel.cs" />
     <Compile Include="ViewModels\StopsViewViewModel.cs" />
+    <Compile Include="RealtimeResultsView.xaml.cs">
+      <DependentUpon>RealtimeResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,6 +121,10 @@
       <SubType>Designer</SubType>
     </DesignData>
     <Page Include="StopsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RealtimeResultsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

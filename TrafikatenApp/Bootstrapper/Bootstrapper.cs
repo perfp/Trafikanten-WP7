@@ -16,6 +16,7 @@ public class Bootstrapper : PhoneBootstrapper
             container = new PhoneContainer(this);
             container.RegisterPerRequest(typeof(IRealtimeStopsService), null, typeof(RealtimeStopsService));
             container.RegisterPerRequest(typeof(StopsViewViewModel), "StopsViewModel", typeof(StopsViewViewModel));
+            container.RegisterPerRequest(typeof(RealtimeResultsViewModel), "RealtimeResultsViewModel", typeof(RealtimeResultsViewModel));
             container.RegisterPerRequest(typeof(MainPageViewModel), "MainPageViewModel", typeof(MainPageViewModel));
             container.RegisterInstance(typeof(INavigationService), null, new FrameAdapter(RootFrame));
 
