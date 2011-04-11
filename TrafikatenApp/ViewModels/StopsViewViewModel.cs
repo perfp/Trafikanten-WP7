@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using Caliburn.Micro;
 
@@ -17,7 +18,7 @@ namespace TrafikantenApp.ViewModels
             ListOfStops = new ObservableCollection<Stop>();
             this.realtimeStopsService = realtimeStopsService;
             this.realtimeStopsService.StopsFound += StopsFound;
-            StopToFind = "Skriv inn stoppested...";
+            StopToFind = "";
         }
 
         private string stopToFind;
@@ -35,13 +36,23 @@ namespace TrafikantenApp.ViewModels
 
         public void FindStops()
         {
-            realtimeStopsService.FindStops(StopToFind);            
+            Debug.WriteLine("Find stops...");
+            realtimeStopsService.FindStops(StopToFind); 
+           
         }
 
         private void StopsFound(IList<Stop> stops)
         {
             ListOfStops.Clear();
             stops.ToList().ForEach(ListOfStops.Add);
+        }
+
+        public Stop SelectedStop { get; set; }
+        public void StopSelected()
+        {
+            string name = "";
+            if (SelectedStop != null) name = SelectedStop.Name;
+            Debug.WriteLine(name + ": Stop selected...");
         }
 
         private void FirePropertyChanged(string property)

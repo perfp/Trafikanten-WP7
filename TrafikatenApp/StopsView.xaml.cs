@@ -13,5 +13,10 @@ namespace TrafikantenApp
         {
             StopToFind.SelectAll();
         }
+
+        private void ListOfStops_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

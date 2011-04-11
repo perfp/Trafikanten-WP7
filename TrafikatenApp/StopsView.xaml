@@ -6,8 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -22,19 +21,28 @@
         <controls:Pivot Title="Trafikanten">
             <!--Pivot item one-->
             <controls:PivotItem Header="Sanntid">
+                
                 <!--Double line list with text wrapping-->
                 <Grid>
-                    <TextBox x:Name="StopToFind" Text="{Binding StopToFind, Mode=TwoWay}"  Height="80" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="380" GotFocus="StopToFind_GotFocus"></TextBox>
-                    <Button x:Name="FindStops" Height="80" Width="80" VerticalAlignment="Top" HorizontalAlignment="Right" Content="F"/>
-                    <ListBox x:Name="ListOfStops" Height="536" Margin="0,71,0,0" ItemsSource="{Binding Path=ListOfStops}">
+                    <TextBox x:Name="StopToFind" Text="{Binding StopToFind, Mode=TwoWay}"  Height="80" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="350" GotFocus="StopToFind_GotFocus" />
+                	<Button x:Name="FindStops" Height="80" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Søk"/>
+                    <ListBox x:Name="ListOfStops" Height="536" Margin="0,71,0,0" ItemsSource="{Binding Path=ListOfStops}"
+                             SelectionMode="Single"
+                             SelectedItem="{Binding SelectedStop, Mode=TwoWay}"
+                            >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="0,0,0,17" Width="432">
-                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     <TextBlock Text="{Binding ID}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <cal:ActionMessage MethodName="StopSelected" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListBox>
                 </Grid>
             </controls:PivotItem>
