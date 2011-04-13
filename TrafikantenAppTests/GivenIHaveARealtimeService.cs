@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TrafikantenApp;
+using TrafikantenApp.Model;
 using TrafikantenApp.Services;
 
 namespace TrafikantenAppTests
@@ -11,26 +12,39 @@ namespace TrafikantenAppTests
     [Tag("Integration")]
     public class GivenIHaveARealtimeService : SilverlightTest
     {
-        private IRealtimeStopsService _realtimeService;
-        private bool _found;
-
-
+     
+      
         [TestMethod]
         [Asynchronous]
         public void WhenICallTheService_IShouldGetResponse()
         {
           
-
-            _found = false;
-            _realtimeService = new RealtimeStopsService();
-            _realtimeService.StopsFound += (stops) =>
+            var realtimeStopsService = new RealtimeStopsService();
+            realtimeStopsService.StopsFound += (stops) =>
             {
                 Assert.IsTrue(stops.First().Name == "Sinsen [T-bane]");
                 EnqueueTestComplete();
             };
 
-            _realtimeService.FindStops("Sinsen");
+            realtimeStopsService.FindStops("Sinsen");
 
         }
+
+        [TestMethod]
+        [Asynchronous]
+        public void WhenICallTheVisitsService_IShouldGetResponse()
+        {
+
+            var realtimeStopsService = new RealtimeStopVisitsService();
+            realtimeStopsService.VisitsFound += (visits) =>
+            {
+                Assert.IsTrue(visits.First().LineNumber == "23");
+                EnqueueTestComplete();
+            };
+
+            realtimeStopsService.GetRealtimeVisitsForStop(new Stop {ID="3012087"});
+
+        }
+
     }
 }

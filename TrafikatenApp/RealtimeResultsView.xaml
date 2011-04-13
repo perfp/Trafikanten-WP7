@@ -5,14 +5,17 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:TrafikantenApp="clr-namespace:TrafikantenApp" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    d:DataContext="{d:DesignData SampleData/RealtimeResultsViewModelSampleData.xaml}"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
 
+    <phone:PhoneApplicationPage.Resources>
+        <TrafikantenApp:DepartureTimeConverter x:Key="DepartureTimeConverter"></TrafikantenApp:DepartureTimeConverter>
+    </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -21,14 +24,28 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">            
-            <TextBlock x:Name="PageTitle" Text="RealtimeResult" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel Grid.Row="0">
+           <TextBlock x:Name="StopName" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Text="{Binding StopName}"/>
+           <TextBlock x:Name="StopID" Height="30" VerticalAlignment="Top" Text="{Binding StopID}"/>
         </StackPanel>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Path=StopVisits}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
 
-        <!--ContentPanel - place additional content here-->
-        
-            <TextBlock x:Name="StopID" Height="80" VerticalAlignment="Top" Text="123" Grid.Row="1"/>
-        
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="330" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                    
+                        <TextBlock Text="{Binding LineNumber}" FontSize="30"  Grid.Column="0"/>
+                        <TextBlock Text="{Binding DestinationName}"  FontSize="30" Grid.Column="1"/>
+                        <TextBlock Text="{Binding ExpectedDeparture, Converter={StaticResource DepartureTimeConverter}}"  FontSize="30" Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 
 </phone:PhoneApplicationPage>

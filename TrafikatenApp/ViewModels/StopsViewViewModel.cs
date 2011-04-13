@@ -8,7 +8,6 @@ using Caliburn.Micro;
 
 namespace TrafikantenApp.ViewModels
 {
-    [SurviveTombstone]
     public class StopsViewViewModel : ViewModelBase 
     {        
         private readonly IRealtimeStopsService realtimeStopsService;
@@ -54,7 +53,7 @@ namespace TrafikantenApp.ViewModels
         {
             if (SelectedStop != null)
             {
-                navigationService.Navigate(new Uri("/RealtimeResultsView.xaml?StopID=" + SelectedStop.ID,
+                navigationService.Navigate(new Uri("/RealtimeResultsView.xaml?StopID=" + SelectedStop.ID + "&StopName=" + SelectedStop.Name,
                                                    UriKind.RelativeOrAbsolute));
             }
         }

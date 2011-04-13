@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using TrafikantenApp.Model;
 using TrafikantenApp.Services;
 using TrafikantenApp.ViewModels;
 
@@ -14,10 +15,10 @@ public class Bootstrapper : PhoneBootstrapper
         protected override void Configure()
         {
             container = new PhoneContainer(this);
+            container.RegisterPerRequest(typeof(IRealtimeStopVisitsService), null, typeof(RealtimeStopVisitsService));
             container.RegisterPerRequest(typeof(IRealtimeStopsService), null, typeof(RealtimeStopsService));
             container.RegisterPerRequest(typeof(StopsViewViewModel), "StopsViewModel", typeof(StopsViewViewModel));
-            container.RegisterPerRequest(typeof(RealtimeResultsViewModel), "RealtimeResultsViewModel", typeof(RealtimeResultsViewModel));
-            container.RegisterPerRequest(typeof(MainPageViewModel), "MainPageViewModel", typeof(MainPageViewModel));
+            container.RegisterPerRequest(typeof(RealtimeResultsViewModel), "RealtimeResultsViewModel", typeof(RealtimeResultsViewModel));           
             container.RegisterInstance(typeof(INavigationService), null, new FrameAdapter(RootFrame));
 
             

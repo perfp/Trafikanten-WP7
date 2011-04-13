@@ -18,7 +18,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <controls:Pivot Title="Trafikanten">
+        <controls:Pivot Title="Reis">
             <!--Pivot item one-->
             <controls:PivotItem Header="Sanntid">
                 

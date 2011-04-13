@@ -87,11 +87,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="DepartureTimeConverter.cs" />
+    <Compile Include="Model\IRealtimeStopVisitsService.cs" />
+    <Compile Include="Model\RealtimeStopVisitsService.cs" />
     <Compile Include="Model\IRealtimeStopsService.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Bootstrapper\PhoneContainer.cs" />
+    <Compile Include="Model\StopVisit.cs" />
     <Compile Include="StopsView.xaml.cs">
       <DependentUpon>StopsView.xaml</DependentUpon>
     </Compile>
@@ -99,7 +100,6 @@
     <Compile Include="Model\RealtimeStopsService.cs" />
     <Compile Include="Bootstrapper\SimpleContainer.cs" />
     <Compile Include="Model\Stop.cs" />
-    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\RealtimeResultsViewModel.cs" />
     <Compile Include="ViewModels\StopsViewViewModel.cs" />
     <Compile Include="RealtimeResultsView.xaml.cs">
@@ -112,13 +112,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <DesignData Include="SampleData\MainViewModelSampleData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="SampleData\RealtimeResultsViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </DesignData>
     <Page Include="StopsView.xaml">
       <SubType>Designer</SubType>
@@ -135,15 +135,14 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Background.png" />
-    <Content Include="images\ApplicationIcon.png" />
-    <Content Include="images\SplashScreenImage.jpg" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

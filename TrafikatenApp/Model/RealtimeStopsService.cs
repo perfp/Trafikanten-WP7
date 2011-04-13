@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Xml.Linq;
+using TrafikantenApp.Model;
 
 namespace TrafikantenApp.Services
 {
     public class RealtimeStopsService : IRealtimeStopsService
     {    
         private ObservableCollection<Stop> _items = new ObservableCollection<Stop>();
-        private WebClient _client;
 
         public void FindStops(string stopToFind)
         {
@@ -21,9 +21,9 @@ namespace TrafikantenApp.Services
 
         private void RetrieveStops(string name)
         {
-            _client = new WebClient();
-            _client.DownloadStringCompleted += StopReceived;
-            _client.DownloadStringAsync(new Uri("http://reis.trafikanten.no/siri/checkrealtimestop.aspx?name=" + name));
+            var client = new WebClient();
+            client.DownloadStringCompleted += StopReceived;
+            client.DownloadStringAsync(new Uri("http://reis.trafikanten.no/siri/checkrealtimestop.aspx?name=" + name));
             
        }
 
@@ -39,5 +39,6 @@ namespace TrafikantenApp.Services
             StopsFound(_items);
         }
 
+    
     }
 }

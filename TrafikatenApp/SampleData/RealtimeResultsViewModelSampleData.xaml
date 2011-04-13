@@ -1,0 +1,25 @@
+﻿<ViewModels:RealtimeResultsViewModel 
+    xmlns:ViewModels="clr-namespace:TrafikantenApp.ViewModels" 
+    xmlns:Model="clr-namespace:TrafikantenApp.Model" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ViewModels:RealtimeResultsViewModel.StopID>12345</ViewModels:RealtimeResultsViewModel.StopID>
+    <ViewModels:RealtimeResultsViewModel.StopName>Sinsen Kirke</ViewModels:RealtimeResultsViewModel.StopName>
+    <ViewModels:RealtimeResultsViewModel.StopVisits>
+        <Model:StopVisit>
+            <Model:StopVisit.LineNumber>23</Model:StopVisit.LineNumber>
+            <Model:StopVisit.DestinationName>Simensbråten</Model:StopVisit.DestinationName>
+            <Model:StopVisit.ExpectedDeparture>12.04.2011 22:00</Model:StopVisit.ExpectedDeparture>
+            <Model:StopVisit.Delay>
+               1234567
+            </Model:StopVisit.Delay>
+        </Model:StopVisit>
+        <Model:StopVisit>
+            <Model:StopVisit.LineNumber>234</Model:StopVisit.LineNumber>
+            <Model:StopVisit.DestinationName>Lysaker</Model:StopVisit.DestinationName>
+            <Model:StopVisit.ExpectedDeparture>12.04.2011 22:05</Model:StopVisit.ExpectedDeparture>
+            <Model:StopVisit.Delay>
+                1234567
+            </Model:StopVisit.Delay>
+        </Model:StopVisit>
+    </ViewModels:RealtimeResultsViewModel.StopVisits>
+</ViewModels:RealtimeResultsViewModel>
